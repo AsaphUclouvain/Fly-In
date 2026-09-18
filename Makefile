@@ -1,17 +1,22 @@
-.PHONY: install run debug clean lint lint-strict test
+.PHONY: install run debug clean fclean lint lint-strict test
 
-PYTHON  ?= python3
-MAP     ?= maps/easy/02_simple_fork.txt
-OUTPUT  ?= sim_output.txt
+PYTHON      ?= python3
+VENV        ?= .venv
+VENV_PYTHON := $(VENV)/bin/python
+MAP         ?= maps/easy/02_simple_fork.txt
+OUTPUT      ?= sim_output.txt
 
-install:
-	$(PYTHON) -m pip install --break-system-packages -r requirements-dev.txt
+install: $(VENV_PYTHON)
+	$(VENV_PYTHON) -m pip install -r requirements-dev.txt
+
+$(VENV_PYTHON):
+	$(PYTHON) -m venv $(VENV)
 
 run:
-	$(PYTHON) -m fly_in.main $(MAP) -o $(OUTPUT)
+	$(VENV_PYTHON) -m fly_in.main $(MAP) -o $(OUTPUT)
 
 debug:
-	$(PYTHON) -m pdb -m fly_in.main $(MAP) -o $(OUTPUT)
+	$(VENV_PYTHON) -m pdb -m fly_in.main $(MAP) -o $(OUTPUT)
 
 clean:
 	find . -type d -name "__pycache__" -exec rm -rf {} +
@@ -21,13 +26,13 @@ fclean: clean
 	rm -rf sim_output.txt
 
 lint:
-	flake8 .
-	mypy . --warn-return-any --warn-unused-ignores --ignore-missing-imports \
+	$(VENV_PYTHON) -m flake8 .
+	$(VENV_PYTHON) -m mypy . --warn-return-any --warn-unused-ignores --ignore-missing-imports \
 		--disallow-untyped-defs --check-untyped-defs
 
 lint-strict:
-	flake8 .
-	mypy . --strict
+	$(VENV_PYTHON) -m flake8 .
+	$(VENV_PYTHON) -m mypy . --strict
 
 test:
-	pytest -q
+	$(VENV_PYTHON) -m pytest -q

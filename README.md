@@ -30,7 +30,7 @@ typed modules:
 No external runtime dependency is required (standard library only).
 
 ```bash
-make install     # installs dev tools only: flake8, mypy, pytest
+make install     # creates .venv and installs dev tools: flake8, mypy, pytest
 make run MAP=maps/easy_2_fork.txt          # runs the simulation
 make run MAP=maps/hard_3_ultimate.txt OUTPUT=out.txt
 make debug MAP=maps/easy_1_linear.txt      # runs under pdb
@@ -39,6 +39,9 @@ make lint-strict  # flake8 + mypy --strict
 make test         # runs the pytest suite
 make clean        # removes __pycache__ / .mypy_cache / .pytest_cache
 ```
+
+The Makefile runs development commands with `.venv` automatically. To
+activate the environment in your shell, run `source .venv/bin/activate`.
 
 Or directly:
 
