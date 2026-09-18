@@ -1,0 +1,13 @@
+# EDGE CASE: two restricted zones in a row. Verifies chained 2-turn
+# movements produce the right sequence of connection/zone labels.
+# Expected: VALID. A single drone should show:
+#   D1-<start_connection_r1>, D1-r1, D1-<r1_connection_r2>, D1-r2,
+#   D1-<r2_connection_goal>... (or fewer events if r2-goal is normal)
+nb_drones: 1
+start_hub: start 0 0
+hub: r1 1 0 [zone=restricted]
+hub: r2 2 0 [zone=restricted]
+end_hub: goal 3 0
+connection: start-r1
+connection: r1-r2
+connection: r2-goal

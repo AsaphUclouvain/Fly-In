@@ -1,0 +1,9 @@
+# EDGE CASE: two regular hubs share the same name (not start/end this
+# time).
+# Expected: ParseError (duplicate zone name).
+nb_drones: 1
+start_hub: start 0 0
+hub: relay 1 0
+hub: relay 2 0
+end_hub: goal 3 0
+connection: start-relay

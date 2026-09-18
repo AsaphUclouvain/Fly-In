@@ -1,0 +1,10 @@
+# EDGE CASE: same shape as #17 but with max_drones/max_link_capacity
+# high enough to let every drone through in parallel.
+# Expected: VALID, all 10 drones delivered in the theoretical minimum
+# (2 turns), since nothing serializes them.
+nb_drones: 10
+start_hub: start 0 0
+hub: wide_hall 1 0 [max_drones=10]
+end_hub: goal 2 0
+connection: start-wide_hall [max_link_capacity=10]
+connection: wide_hall-goal [max_link_capacity=10]

@@ -1,0 +1,9 @@
+# EDGE CASE: zone= value that is not one of normal/blocked/restricted/
+# priority.
+# Expected: ParseError ('lava' is not a valid zone type).
+nb_drones: 1
+start_hub: start 0 0
+hub: volcano 1 0 [zone=lava]
+end_hub: goal 2 0
+connection: start-volcano
+connection: volcano-goal

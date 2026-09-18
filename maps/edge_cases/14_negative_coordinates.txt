@@ -1,0 +1,9 @@
+# EDGE CASE: negative integer coordinates. The subject only guarantees
+# coordinates are integers, not that they are non-negative.
+# Expected: VALID, parses and solves normally.
+nb_drones: 1
+start_hub: start -5 -5
+hub: mid -2 0
+end_hub: goal 0 3
+connection: start-mid
+connection: mid-goal

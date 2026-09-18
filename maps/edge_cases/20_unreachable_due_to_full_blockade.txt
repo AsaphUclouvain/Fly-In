@@ -1,0 +1,13 @@
+# EDGE CASE: every single path from start to end is blocked.
+# Expected: parses OK, then SimulationError (no path found for D1) --
+# this specifically distinguishes "syntactically valid but physically
+# unsolvable" from a ParseError.
+nb_drones: 1
+start_hub: start 0 0
+hub: wall_a 1 0 [zone=blocked]
+hub: wall_b 0 1 [zone=blocked]
+end_hub: goal 1 1
+connection: start-wall_a
+connection: start-wall_b
+connection: wall_a-goal
+connection: wall_b-goal

@@ -1,0 +1,7 @@
+# EDGE CASE: start and end are directly connected, zero intermediate
+# hubs. The smallest possible non-degenerate map.
+# Expected: VALID, solves in exactly 1 turn per drone.
+nb_drones: 2
+start_hub: start 0 0
+end_hub: goal 1 0
+connection: start-goal

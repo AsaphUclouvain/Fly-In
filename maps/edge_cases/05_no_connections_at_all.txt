@@ -1,0 +1,8 @@
+# EDGE CASE: structurally valid file (parses fine), but there is no
+# connection whatsoever between start and end.
+# Expected: parses OK, then SimulationError (no path found) at the
+# engine stage -- this is NOT a ParseError, it's an unsolvable map.
+nb_drones: 1
+start_hub: start 0 0
+end_hub: goal 5 5
+hub: floating 2 2

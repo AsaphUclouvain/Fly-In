@@ -1,0 +1,8 @@
+# EDGE CASE: max_drones=0 on a hub (must be a positive integer).
+# Expected: ParseError (max_drones must be positive).
+nb_drones: 1
+start_hub: start 0 0
+hub: bad_zone 1 0 [max_drones=0]
+end_hub: goal 2 0
+connection: start-bad_zone
+connection: bad_zone-goal

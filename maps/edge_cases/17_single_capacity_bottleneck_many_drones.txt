@@ -1,0 +1,11 @@
+# EDGE CASE: 10 drones must funnel one at a time through a
+# max_drones=1 / max_link_capacity=1 bottleneck.
+# Expected: VALID, but makespan grows roughly linearly with the
+# number of drones (serialization). Good stress test for scheduling
+# correctness (no two drones ever double-book the bottleneck).
+nb_drones: 10
+start_hub: start 0 0
+hub: bottleneck 1 0 [max_drones=1]
+end_hub: goal 2 0
+connection: start-bottleneck [max_link_capacity=1]
+connection: bottleneck-goal [max_link_capacity=1]

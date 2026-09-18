@@ -1,0 +1,14 @@
+# EDGE CASE: end zone exists but is in a separate connected component
+# from start (graph is disconnected).
+# Expected: parses OK, then SimulationError (no path found).
+nb_drones: 1
+start_hub: start 0 0
+hub: island_a 1 0
+hub: island_b 2 0
+end_hub: goal 3 0
+connection: start-island_a
+connection: island_a-island_b
+hub: mainland_a 0 5
+hub: mainland_b 1 5
+connection: mainland_a-mainland_b
+connection: mainland_b-goal

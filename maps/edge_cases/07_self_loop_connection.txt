@@ -1,0 +1,9 @@
+# EDGE CASE: a connection linking a zone to itself ("a-a").
+# Expected: ParseError (a connection cannot link a zone to itself).
+nb_drones: 1
+start_hub: start 0 0
+hub: weird 1 0
+end_hub: goal 2 0
+connection: start-weird
+connection: weird-weird
+connection: weird-goal

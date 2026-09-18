@@ -1,0 +1,18 @@
+# EDGE CASE: the direct route is entirely blocked, forcing every
+# drone onto a much longer detour.
+# Expected: VALID. No drone ever visits "shortcut_a"/"shortcut_b".
+nb_drones: 3
+start_hub: start 0 0
+hub: shortcut_a 1 0 [zone=blocked]
+hub: shortcut_b 2 0 [zone=blocked]
+hub: detour_a 0 1
+hub: detour_b 1 1
+hub: detour_c 2 1
+end_hub: goal 3 0
+connection: start-shortcut_a
+connection: shortcut_a-shortcut_b
+connection: shortcut_b-goal
+connection: start-detour_a
+connection: detour_a-detour_b
+connection: detour_b-detour_c
+connection: detour_c-goal

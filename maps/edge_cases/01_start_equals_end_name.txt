@@ -1,0 +1,8 @@
+# EDGE CASE: start_hub and end_hub declared with the SAME zone name.
+# Expected: ParseError (duplicate zone name) -- the subject guarantees
+# a unique start and unique end, but the parser must reject this
+# cleanly if it ever happens (e.g. hand-edited/corrupted map file).
+nb_drones: 1
+start_hub: base 0 0
+end_hub: base 5 5
+connection: base-base

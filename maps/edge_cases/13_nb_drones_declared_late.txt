@@ -1,0 +1,7 @@
+# EDGE CASE: nb_drones appears AFTER a hub definition instead of
+# being the first directive.
+# Expected: ParseError (nb_drones must be declared before any hub).
+start_hub: start 0 0
+nb_drones: 2
+end_hub: goal 1 0
+connection: start-goal
